@@ -1828,7 +1828,7 @@
       });
     }
     function galTick() {
-      galCurrent += (galTarget - galCurrent) * 0.14;
+      galCurrent += (galTarget - galCurrent) * 0.08;
       if (Math.abs(galTarget - galCurrent) < 0.4) galCurrent = galTarget;
       galleryTrack.style.transform = 'translate3d(' + (-galCurrent).toFixed(1) + 'px,0,0)';
       galParallax();
