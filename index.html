@@ -1769,8 +1769,13 @@
         e.preventDefault();
         errEl.classList.remove('show');
 
-        // native validation
-        if (!form.checkValidity()) { form.reportValidity(); return; }
+        // native validation — show a visible message too
+        if (!form.checkValidity()) {
+          errEl.textContent = 'Please complete the required fields, including the consent box.';
+          errEl.classList.add('show');
+          form.reportValidity();
+          return;
+        }
         // honeypot — silently drop bots
         const hp = form.querySelector('[name="botcheck"]');
         if (hp && hp.checked) return;
@@ -1780,21 +1785,25 @@
         btn.textContent = 'Sending…';
 
         try {
-          if (!keySet) throw new Error('access key not configured');
+          if (!keySet) throw new Error('the access key is not configured');
           const res = await fetch('https://api.web3forms.com/submit', {
             method: 'POST',
             headers: { 'Accept': 'application/json' },
             body: new FormData(form)
           });
-          const json = await res.json();
-          if (!json.success) throw new Error(json.message || 'submission failed');
+          let json = {};
+          try { json = await res.json(); } catch (_) {}
+          if (!res.ok || !json.success) {
+            throw new Error(json.message || ('server responded ' + res.status));
+          }
           form.hidden = true;
           successEl.hidden = false;
           successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
         } catch (err) {
+          console.error('Web3Forms submit failed:', err);
           btn.disabled = false;
           btn.innerHTML = original;
-          errEl.textContent = 'Sorry — we couldn’t send that just now. Please email us directly at dylanbriscoe@gmail.com.';
+          errEl.textContent = 'Could not send — ' + ((err && err.message) || 'network error') + '. Please email dylanbriscoe@gmail.com directly.';
           errEl.classList.add('show');
         }
       });
