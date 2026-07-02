@@ -1,0 +1,1804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briscoe Capital — Built to Carry Great Businesses Forward</title>
+  <meta name="description" content="Operator-owners acquiring and growing established small businesses across Texas — a confidential, long-term home for the business you built.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+
+  <!-- Canonical & theme -->
+  <link rel="canonical" href="https://briscoecapital.com/">
+  <meta name="theme-color" content="#181b3e">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Briscoe Capital">
+  <meta property="og:title" content="Briscoe Capital — Built to Carry Great Businesses Forward">
+  <meta property="og:description" content="Operator-owners acquiring and growing established small businesses across Texas — a confidential, long-term home for the business you built.">
+  <meta property="og:url" content="https://briscoecapital.com/">
+  <meta property="og:image" content="https://briscoecapital.com/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_US">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Briscoe Capital — Built to Carry Great Businesses Forward">
+  <meta name="twitter:description" content="Operator-owners acquiring and growing established small businesses across Texas — a confidential, long-term home for the business you built.">
+  <meta name="twitter:image" content="https://briscoecapital.com/images/og-image.jpg">
+
+  <!-- Structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FinancialService",
+    "name": "Briscoe Capital",
+    "url": "https://briscoecapital.com/",
+    "logo": "https://briscoecapital.com/images/logo-mark.png",
+    "image": "https://briscoecapital.com/images/og-image.jpg",
+    "description": "Operator-owners acquiring and growing established small businesses across Texas — a confidential, long-term home for the business you built.",
+    "email": "dylanbriscoe@gmail.com",
+    "slogan": "Built to carry great businesses forward.",
+    "areaServed": [
+      { "@type": "City", "name": "Austin" },
+      { "@type": "City", "name": "Dallas" },
+      { "@type": "State", "name": "Texas" }
+    ],
+    "founder": [
+      { "@type": "Person", "name": "Dylan Briscoe" },
+      { "@type": "Person", "name": "Bradley Briscoe" }
+    ],
+    "knowsAbout": ["Small business acquisition", "Business succession planning", "SBA financing"]
+  }
+  </script>
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --navy: #181b3e;
+      --navy-mid: #1f2350;
+      --navy-light: #2a2f63;
+      --orange: #fc2f00;
+      --orange-light: #ff4a24;
+      --orange-muted: rgba(252, 47, 0, 0.14);
+      --cream: #f7f5f1;
+      --cream-dark: #ebe8e2;
+      --white: #ffffff;
+      --text-dark: #16172a;
+      --text-mid: #5a5b66;
+      --text-light: rgba(255, 255, 255, 0.72);
+      --text-white: #ffffff;
+      --serif: 'Instrument Serif', Georgia, serif;
+      --sans: 'Inter', -apple-system, sans-serif;
+      --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: var(--sans);
+      color: var(--text-dark);
+      background: var(--cream);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    /* ── Utility ── */
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 80px); }
+    .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+    .label {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .label-dark { color: var(--orange); }
+
+    /* ── Reveal animation ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease-out);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Navigation ── */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 0 clamp(24px, 5vw, 80px);
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
+    }
+    .nav.scrolled {
+      background: rgba(24, 27, 62, 0.92);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+      color: var(--text-white);
+    }
+    .logo-mark { height: 40px; width: auto; flex-shrink: 0; display: block; }
+    .nav-logo-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-left: 13px;
+      padding-left: 14px;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+      line-height: 1;
+    }
+    .nav-logo-text strong {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 0.86rem;
+      letter-spacing: 0.22em;
+      color: var(--text-white);
+    }
+    .nav-logo-cap {
+      font-family: var(--sans);
+      font-weight: 500;
+      font-size: 0.56rem;
+      letter-spacing: 0.36em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-top: 4px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--orange);
+      transition: width 0.3s var(--ease);
+    }
+    .nav-links a:hover { color: var(--text-white); }
+    .nav-links a:hover::after { width: 100%; }
+    .nav-cta {
+      font-size: 0.7rem !important;
+      font-weight: 600 !important;
+      letter-spacing: 0.12em !important;
+      padding: 10px 24px;
+      background: var(--orange);
+      color: var(--text-white) !important;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+    }
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover { background: var(--orange-light); transform: translateY(-1px); }
+
+    /* Mobile nav */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--text-white);
+      margin: 5px 0;
+      transition: transform 0.3s, opacity 0.3s;
+    }
+
+    @media (max-width: 900px) {
+      .nav-toggle { display: block; }
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: var(--navy);
+        flex-direction: column;
+        padding: 100px 40px 40px;
+        gap: 28px;
+        transition: right 0.4s var(--ease-out);
+      }
+      .nav-links.open { right: 0; }
+      .nav-links a { font-size: 0.85rem; }
+    }
+
+    /* ── Hero ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: flex-end;
+      padding-bottom: clamp(60px, 8vh, 120px);
+      background: var(--navy);
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: var(--navy);
+    }
+    .hero-bg-img {
+      position: absolute;
+      top: -6%;
+      left: 0;
+      width: 100%;
+      height: 112%;
+      background: url('images/hero-austin-sunset.jpg') center 40% / cover no-repeat;
+      transform: scale(1.04);
+      will-change: transform;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(24,27,62,0.30) 0%, rgba(24,27,62,0.18) 30%, rgba(24,27,62,0.55) 68%, rgba(24,27,62,0.96) 100%),
+        linear-gradient(90deg, rgba(24,27,62,0.78) 0%, rgba(24,27,62,0.35) 45%, rgba(24,27,62,0.05) 100%);
+    }
+    .hero .container {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+    }
+    .hero-content { max-width: 960px; }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 7.6vw, 6.5rem);
+      font-weight: 400;
+      line-height: 1.03;
+      color: var(--text-white);
+      margin: 22px 0 34px;
+      letter-spacing: -0.02em;
+    }
+    .hero-body {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      max-width: 520px;
+    }
+    .hero-body p + p { margin-top: 16px; }
+    .hero-ctas {
+      display: flex;
+      gap: 16px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: var(--orange);
+      color: var(--navy);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .btn-primary:hover { background: var(--orange-light); transform: translateY(-2px); }
+    .btn-primary svg { width: 14px; height: 14px; }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 32px;
+      background: transparent;
+      color: var(--text-white);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+
+    /* ── Credibility Bar ── */
+    .credibility {
+      background: var(--cream);
+      padding: clamp(48px, 6vw, 80px) 0;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .credibility-tagline {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+      color: var(--text-dark);
+      margin-bottom: 40px;
+      padding-left: 20px;
+      border-left: 3px solid var(--orange);
+    }
+    .credibility-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+    }
+    .credibility-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .credibility-num {
+      font-family: var(--serif);
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--orange);
+      flex-shrink: 0;
+      line-height: 1.4;
+    }
+    .credibility-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text-mid);
+    }
+
+    @media (max-width: 900px) {
+      .credibility-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .credibility-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── What We Do (Mission) ── */
+    .mission {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .mission .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .mission-image {
+      position: relative;
+      aspect-ratio: 4/5;
+    }
+    .mission-image::before {
+      content: '';
+      position: absolute;
+      inset: 28px -28px -28px 28px;
+      border: 1px solid rgba(252, 47, 0, 0.55);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .mission-image-inner {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: url('images/mission-dallas-frame.jpg') center / cover no-repeat;
+    }
+    .mission-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin: 16px 0 28px;
+    }
+    .mission-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      max-width: 500px;
+    }
+    .mission-text p + p { margin-top: 16px; }
+
+    @media (max-width: 900px) {
+      .mission .container { grid-template-columns: 1fr; }
+      .mission-image { max-width: 500px; }
+    }
+
+    /* ── Who We Work With (Collaboration) ── */
+    .collaboration {
+      background: var(--navy);
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .collaboration h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-white);
+      margin: 16px 0 60px;
+      max-width: 700px;
+    }
+    .collaboration-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .collaboration-card {
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 40px 32px;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .collaboration-card:hover {
+      border-color: rgba(252,47,0,0.3);
+      background: rgba(255,255,255,0.02);
+    }
+    .collaboration-card h3 {
+      font-family: var(--sans);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-white);
+      margin-bottom: 20px;
+    }
+    .collaboration-card p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--text-light);
+    }
+    .collaboration-cta {
+      margin-top: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .collaboration-cards { grid-template-columns: 1fr; max-width: 500px; }
+    }
+
+    /* ── Acquisition Criteria ── */
+    .criteria {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .criteria .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
+    }
+    .criteria-content h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    .criteria-content > p {
+      font-size: 1rem;
+      color: var(--text-mid);
+      margin-bottom: 40px;
+    }
+    .criteria-list { list-style: none; }
+    .criteria-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+      cursor: default;
+      transition: padding-left 0.3s var(--ease);
+    }
+    .criteria-item:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+    .criteria-item:hover { padding-left: 8px; }
+    .criteria-item-text {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--text-dark);
+    }
+    .criteria-item-arrow {
+      color: var(--orange);
+      font-size: 1.2rem;
+      transition: transform 0.3s var(--ease);
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+    .criteria-item:hover .criteria-item-arrow { transform: translateX(4px); }
+    .criteria-note {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-mid);
+      margin-top: 32px;
+      max-width: 480px;
+    }
+    .criteria-image {
+      position: relative;
+      height: 100%;
+      min-height: 500px;
+    }
+    .criteria-image-inner {
+      position: sticky;
+      top: 100px;
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: url('images/criteria-texas-neon.jpg') center / cover no-repeat;
+      box-shadow: 28px 28px 0 0 var(--navy);
+    }
+
+    @media (max-width: 900px) {
+      .criteria .container { grid-template-columns: 1fr; }
+      .criteria-image { display: none; }
+    }
+
+    /* ── Our Approach ── */
+    .approach {
+      background: var(--navy);
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .approach-header {
+      max-width: 700px;
+      margin-bottom: 60px;
+    }
+    .approach-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-white);
+      margin: 16px 0 24px;
+    }
+    .approach-header p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      max-width: 560px;
+    }
+    .approach-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+    }
+    .approach-card {
+      background: rgba(255,255,255,0.03);
+      padding: 36px 28px;
+      border-top: 2px solid transparent;
+      transition: border-color 0.4s, background 0.4s;
+    }
+    .approach-card:hover {
+      border-top-color: var(--orange);
+      background: rgba(255,255,255,0.05);
+    }
+    .approach-card-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 20px;
+      color: var(--orange);
+    }
+    .approach-card h3 {
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-white);
+      margin-bottom: 12px;
+    }
+    .approach-card p {
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--text-light);
+    }
+
+    @media (max-width: 1100px) {
+      .approach-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .approach-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Promise to Owners ── */
+    .promise {
+      background: var(--navy-mid);
+      padding: clamp(80px, 11vw, 150px) 0;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .promise .container {
+      display: grid;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: clamp(40px, 7vw, 110px);
+      align-items: start;
+    }
+    .promise-intro h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.1rem, 3.6vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--text-white);
+      margin: 18px 0 22px;
+    }
+    .promise-intro > p {
+      font-size: 1.02rem;
+      line-height: 1.75;
+      color: var(--text-light);
+      max-width: 420px;
+    }
+    .promise-sign {
+      margin-top: 28px;
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.35rem;
+      color: var(--orange);
+    }
+    .promise-list { display: flex; flex-direction: column; }
+    .promise-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 22px;
+      padding: 26px 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .promise-item:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .promise-num {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      color: var(--orange);
+      line-height: 1;
+    }
+    .promise-item h3 {
+      font-family: var(--sans);
+      font-size: 1.12rem;
+      font-weight: 600;
+      color: var(--text-white);
+      margin-bottom: 8px;
+    }
+    .promise-item p {
+      font-size: 0.97rem;
+      line-height: 1.65;
+      color: var(--text-light);
+    }
+    @media (max-width: 820px) {
+      .promise .container { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    /* ── Process ── */
+    .process {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 140px) 0;
+    }
+    .process-header {
+      max-width: 600px;
+      margin-bottom: 64px;
+    }
+    .process-header p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      margin-top: 16px;
+    }
+    .process-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin: 16px 0 0;
+    }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,0,0,0.1) 20%, rgba(0,0,0,0.1) 80%, transparent);
+    }
+    .process-step { position: relative; }
+    .process-step-num {
+      font-family: var(--serif);
+      font-size: 3rem;
+      font-style: italic;
+      color: var(--orange);
+      line-height: 1;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .process-step h3 {
+      font-family: var(--sans);
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+    }
+    .process-step p {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--text-mid);
+    }
+
+    @media (max-width: 900px) {
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 600px) {
+      .process-steps { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    /* ── Signature Horizontal Gallery ── */
+    .gallery {
+      position: relative;
+      background: var(--navy);
+      height: 340vh;
+    }
+    .gallery-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }
+    .gallery-progress {
+      position: absolute;
+      bottom: 56px;
+      left: 8vw;
+      right: 8vw;
+      height: 1px;
+      background: rgba(255,255,255,0.12);
+      z-index: 3;
+    }
+    .gallery-progress-bar {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 0%;
+      background: var(--orange);
+      transition: width 0.1s linear;
+    }
+    .gallery-track {
+      display: flex;
+      align-items: center;
+      gap: clamp(24px, 3vw, 48px);
+      padding: 0 8vw;
+      will-change: transform;
+    }
+    .gallery-intro {
+      flex: 0 0 auto;
+      width: clamp(300px, 36vw, 480px);
+      padding-right: 32px;
+    }
+    .gallery-intro h2 {
+      font-family: var(--serif);
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 400;
+      line-height: 1.1;
+      color: var(--text-white);
+      margin: 16px 0 24px;
+    }
+    .gallery-intro p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      max-width: 380px;
+    }
+    .gallery-scroll-hint {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 28px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+    .gallery-scroll-hint svg { width: 28px; height: 10px; }
+    .gallery-panel {
+      flex: 0 0 auto;
+      width: clamp(300px, 34vw, 520px);
+      margin: 0;
+      position: relative;
+    }
+    .gallery-img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+    .gallery-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 55%, rgba(24,27,62,0.75) 100%);
+    }
+    .gallery-panel figcaption {
+      position: absolute;
+      bottom: 24px;
+      left: 24px;
+      right: 24px;
+      z-index: 2;
+      display: flex;
+      align-items: baseline;
+      gap: 14px;
+      color: var(--text-white);
+    }
+    .gallery-num {
+      font-family: var(--serif);
+      font-style: italic;
+      font-size: 1.5rem;
+      color: var(--orange);
+    }
+    .gallery-cap-text { font-size: 0.95rem; font-weight: 500; letter-spacing: 0.02em; }
+    .gallery-cap-sub {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-top: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .gallery { height: auto; }
+      .gallery-sticky {
+        position: static;
+        height: auto;
+        display: block;
+        padding: 80px 0;
+      }
+      .gallery-track {
+        transform: none !important;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        -webkit-overflow-scrolling: touch;
+        padding: 0 24px 20px;
+      }
+      .gallery-intro { width: 80vw; scroll-snap-align: start; }
+      .gallery-panel { width: 75vw; scroll-snap-align: center; }
+      .gallery-progress { display: none; }
+    }
+
+    /* ── Story ── */
+    .story {
+      background: var(--cream);
+      padding: clamp(80px, 10vw, 140px) 0 clamp(80px, 10vw, 140px);
+    }
+    .story .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 100px);
+      align-items: center;
+    }
+    .story-text h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 400;
+      line-height: 1.15;
+      color: var(--text-dark);
+      margin: 16px 0 28px;
+    }
+    .story-text p {
+      font-size: 1rem;
+      line-height: 1.8;
+      color: var(--text-mid);
+      max-width: 500px;
+    }
+    .story-text p + p { margin-top: 16px; }
+    .story-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .story-photo {
+      aspect-ratio: 3/4;
+      background: var(--cream-dark);
+      position: relative;
+      overflow: hidden;
+    }
+    .story-photo-placeholder {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(160deg, var(--navy-light) 0%, var(--navy) 100%);
+    }
+    .story-photo-placeholder svg {
+      width: 48px;
+      height: 48px;
+      color: rgba(255,255,255,0.15);
+    }
+    .story-photo-placeholder span {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.3);
+    }
+    .story-photo-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 18%;
+    }
+    .story-photo-caption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      padding: 26px 18px 16px;
+      background: linear-gradient(0deg, rgba(24,27,62,0.92) 0%, rgba(24,27,62,0) 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .story-photo-caption strong {
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .story-photo-caption span {
+      color: var(--orange);
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+    }
+    .story-cta { margin-top: 32px; }
+    .btn-outline-dark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 28px;
+      background: transparent;
+      color: var(--text-dark);
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .btn-outline-dark:hover { border-color: var(--orange); background: var(--orange-muted); }
+
+    @media (max-width: 900px) {
+      .story .container { grid-template-columns: 1fr; }
+      .story-photos { max-width: 400px; }
+    }
+
+    /* ── Partner Network ── */
+    .partners {
+      background: var(--navy-mid);
+      padding: clamp(80px, 10vw, 120px) 0;
+      text-align: center;
+    }
+    .partners h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--text-white);
+      margin: 16px auto 24px;
+      max-width: 600px;
+    }
+    .partners > .container > p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: var(--text-light);
+      max-width: 560px;
+      margin: 0 auto 40px;
+    }
+    .partners-tags {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      max-width: 700px;
+      margin: 0 auto 48px;
+    }
+    .partner-tag {
+      padding: 8px 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .partner-tag:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+    }
+
+    /* ── Contact / Intake ── */
+    .contact {
+      background: var(--navy);
+      padding: clamp(80px, 12vw, 150px) 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .contact::before {
+      content: '';
+      position: absolute;
+      top: -12%; right: -6%;
+      width: 620px; height: 620px;
+      background: radial-gradient(circle, rgba(252,47,0,0.10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .contact .container {
+      position: relative; z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(40px, 6vw, 88px);
+      align-items: center;
+    }
+    .contact-intro, .contact-form-wrap { min-width: 0; }
+    .contact-intro h2 {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 3.4vw, 3rem);
+      font-weight: 400;
+      line-height: 1.12;
+      color: var(--text-white);
+      margin: 16px 0 20px;
+    }
+    .contact-intro > p {
+      font-size: 1.05rem; line-height: 1.7;
+      color: var(--text-light); max-width: 440px;
+    }
+    .contact-assurances { margin: 30px 0; display: flex; flex-direction: column; gap: 14px; }
+    .contact-assurance { display: flex; align-items: center; gap: 12px; color: var(--text-white); font-size: 0.92rem; }
+    .contact-assurance svg { width: 20px; height: 20px; color: var(--orange); flex-shrink: 0; }
+    .contact-direct { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 20px; }
+    .contact-direct p { font-size: 0.92rem; color: var(--text-light); margin: 4px 0; }
+    .contact-direct a { color: var(--orange); text-decoration: none; }
+    .contact-direct a:hover { text-decoration: underline; }
+
+    .contact-form-wrap {
+      background: #fff;
+      padding: clamp(30px, 3vw, 46px);
+      border-top: 3px solid var(--orange);
+      box-shadow: 0 30px 60px -24px rgba(0,0,0,0.5);
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .field { display: flex; flex-direction: column; gap: 8px; }
+    .field label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mid); }
+    .field label span { color: var(--orange); }
+    .field input, .field textarea {
+      font-family: var(--sans); font-size: 1rem; color: var(--text-dark);
+      background: #fbfaf8; border: 1px solid #e4e0d7; border-radius: 0;
+      padding: 14px 16px; width: 100%;
+      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+    }
+    .field input::placeholder, .field textarea::placeholder { color: #a8a49b; }
+    .field input:focus, .field textarea:focus {
+      outline: none; border-color: var(--orange); background: #fff;
+      box-shadow: 0 0 0 3px rgba(252,47,0,0.12);
+    }
+    .field textarea { resize: vertical; min-height: 128px; }
+    .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; cursor: pointer; }
+    .consent input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--orange); flex-shrink: 0; }
+    .consent .req { color: var(--orange); }
+    .form-submit { justify-content: center; margin-top: 6px; width: 100%; padding-top: 17px; padding-bottom: 17px; }
+    .form-error { color: #b3200a; font-size: 0.85rem; display: none; }
+    .form-error.show { display: block; }
+    .form-success { text-align: center; padding: clamp(30px, 4vw, 56px) 20px; }
+    .form-success svg { width: 56px; height: 56px; color: var(--orange); margin-bottom: 18px; }
+    .form-success h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--text-dark); margin-bottom: 12px; }
+    .form-success p { color: var(--text-mid); line-height: 1.65; max-width: 380px; margin: 0 auto; }
+
+    @media (max-width: 860px) {
+      .contact .container { grid-template-columns: 1fr; gap: 44px; align-items: start; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 48px 0;
+    }
+    .footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-left { max-width: 480px; }
+    .footer-left p {
+      font-size: 0.8rem;
+      line-height: 1.6;
+      color: var(--text-light);
+      margin-top: 16px;
+    }
+    .footer-right {
+      text-align: right;
+    }
+    .footer-right p {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+    .footer-right a {
+      color: var(--orange);
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+    .footer-right a:hover { opacity: 0.8; }
+    .footer-divider {
+      width: 100%;
+      height: 1px;
+      background: rgba(255,255,255,0.06);
+      margin: 24px 0;
+    }
+    .footer-bottom {
+      font-size: 0.7rem;
+      color: rgba(255,255,255,0.3);
+    }
+
+    @media (max-width: 600px) {
+      .footer .container { flex-direction: column; text-align: center; }
+      .footer-right { text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo" aria-label="Briscoe Capital Home">
+      <img class="logo-mark" src="images/logo-mark.png" alt="Briscoe Capital BC monogram" width="33" height="40" decoding="async" />
+      <span class="nav-logo-text"><strong>BRISCOE</strong><span class="nav-logo-cap">Capital</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#strategy">Strategy</a></li>
+      <li><a href="#criteria">Criteria</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#partners">Partners</a></li>
+      <li><a href="#contact" class="nav-cta">Submit Deal</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="hero">
+    <div class="hero-bg" aria-hidden="true">
+      <div class="hero-bg-img" id="heroBgImg"></div>
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container">
+      <div class="hero-content">
+        <span class="label">A Long-Term Home for Your Business</span>
+        <h1>Built to carry great businesses forward.</h1>
+        <div class="hero-body">
+          <p>Selling the business you built is personal — it's your people, your customers, and your name. It deserves a buyer who treats it that way.</p>
+          <p>We're operator-owners who acquire one business and hold it for the long term — protecting what works and helping it grow.</p>
+        </div>
+        <div class="hero-ctas">
+          <a href="#contact" class="btn-primary">
+            Submit an Opportunity
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </a>
+          <a href="#contact" class="btn-secondary">Schedule a Call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Credibility Bar ── -->
+  <section class="credibility">
+    <div class="container">
+      <div class="credibility-tagline reveal">Real buyers. Honest conversations. A lasting home for what you built.</div>
+      <div class="credibility-grid">
+        <div class="credibility-item reveal">
+          <span class="credibility-num">01</span>
+          <span class="credibility-text">Operator-owners who run what we buy</span>
+        </div>
+        <div class="credibility-item reveal reveal-delay-1">
+          <span class="credibility-num">02</span>
+          <span class="credibility-text">Texas roots and a long-term focus</span>
+        </div>
+        <div class="credibility-item reveal reveal-delay-2">
+          <span class="credibility-num">03</span>
+          <span class="credibility-text">SBA and outside-capital pathways</span>
+        </div>
+        <div class="credibility-item reveal reveal-delay-3">
+          <span class="credibility-num">04</span>
+          <span class="credibility-text">Built for owners, brokers, lenders, and partners</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── What We Do ── -->
+  <section class="mission" id="strategy">
+    <div class="container">
+      <div class="mission-image reveal">
+        <div class="mission-image-inner" role="img" aria-label="Business growth illustration"></div>
+      </div>
+      <div class="mission-text">
+        <span class="label reveal">Our Mission</span>
+        <h2 class="reveal reveal-delay-1">A lasting home for the business you built.</h2>
+        <p class="reveal reveal-delay-2">We look for profitable companies with loyal customers, capable teams, and a culture worth keeping — the kind of business a community would miss.</p>
+        <p class="reveal reveal-delay-3">We don't strip and flip. We protect what already works, support the people behind it, and invest patiently in the next chapter of growth.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Who We Work With ── -->
+  <section class="collaboration">
+    <div class="container">
+      <span class="label reveal">Collaboration</span>
+      <h2 class="reveal reveal-delay-1">A clear path for sellers, brokers, lenders, and partners.</h2>
+      <div class="collaboration-cards">
+        <div class="collaboration-card reveal">
+          <h3>For Owners</h3>
+          <p>A private, unhurried conversation about your future — and an honest answer on whether we're the right people to carry your business forward.</p>
+        </div>
+        <div class="collaboration-card reveal reveal-delay-1">
+          <h3>For Brokers</h3>
+          <p>Clear criteria, honest feedback, and serious, funded intent.</p>
+        </div>
+        <div class="collaboration-card reveal reveal-delay-2">
+          <h3>For Partners</h3>
+          <p>A focused thesis, operator involvement, and a disciplined review.</p>
+        </div>
+      </div>
+      <div class="collaboration-cta reveal">
+        <a href="#contact" class="btn-primary">
+          Connect With Us
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Acquisition Criteria ── -->
+  <section class="criteria" id="criteria">
+    <div class="container">
+      <div class="criteria-content">
+        <h2 class="reveal">Our acquisition criteria.</h2>
+        <p class="reveal reveal-delay-1">We are actively reviewing businesses with:</p>
+        <ul class="criteria-list">
+          <li class="criteria-item reveal">
+            <span class="criteria-item-text">$300K–$1M in EBITDA or SDE</span>
+            <span class="criteria-item-arrow">→</span>
+          </li>
+          <li class="criteria-item reveal reveal-delay-1">
+            <span class="criteria-item-text">$1M–$5M in enterprise value</span>
+            <span class="criteria-item-arrow">→</span>
+          </li>
+          <li class="criteria-item reveal">
+            <span class="criteria-item-text">Strong existing management or clear transition plan</span>
+            <span class="criteria-item-arrow">→</span>
+          </li>
+          <li class="criteria-item reveal reveal-delay-1">
+            <span class="criteria-item-text">Established customer base</span>
+            <span class="criteria-item-arrow">→</span>
+          </li>
+          <li class="criteria-item reveal">
+            <span class="criteria-item-text">Healthy operating culture</span>
+            <span class="criteria-item-arrow">→</span>
+          </li>
+          <li class="criteria-item reveal reveal-delay-1">
+            <span class="criteria-item-text">Room to grow through marketing, sales, or systems</span>
+            <span class="criteria-item-arrow">→</span>
+          </li>
+          <li class="criteria-item reveal">
+            <span class="criteria-item-text">Texas or surrounding regional presence preferred</span>
+            <span class="criteria-item-arrow">→</span>
+          </li>
+        </ul>
+        <p class="criteria-note reveal">We're especially drawn to founder- and family-owned businesses where the owner cares what happens next.</p>
+      </div>
+      <div class="criteria-image reveal">
+        <div class="criteria-image-inner" role="img" aria-label="Modern business buildings"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Our Approach ── -->
+  <section class="approach">
+    <div class="container">
+      <div class="approach-header">
+        <span class="label reveal">Our Approach</span>
+        <h2 class="reveal reveal-delay-1">Preserve the core. Build the next chapter.</h2>
+        <p class="reveal reveal-delay-2">Great businesses are built by people, not spreadsheets. We take time to understand your team, your customers, and how the business really runs — then grow it patiently, without losing what made it work.</p>
+      </div>
+      <div class="approach-grid">
+        <div class="approach-card reveal">
+          <svg class="approach-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="18" cy="18" r="14"/><path d="M12 18l4 4 8-8"/>
+          </svg>
+          <h3>Sales & Marketing</h3>
+          <p>Outreach, retention, and referrals that drive durable revenue.</p>
+        </div>
+        <div class="approach-card reveal reveal-delay-1">
+          <svg class="approach-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="6" y="8" width="24" height="18" rx="2"/><path d="M6 14h24M14 14v12"/>
+          </svg>
+          <h3>KPI & Reporting</h3>
+          <p>Clear visibility into performance, cash flow, and operational health.</p>
+        </div>
+        <div class="approach-card reveal reveal-delay-2">
+          <svg class="approach-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M8 28V14l10-8 10 8v14a2 2 0 01-2 2H10a2 2 0 01-2-2z"/><path d="M14 28V20h8v8"/>
+          </svg>
+          <h3>Systems & Automation</h3>
+          <p>Automation and technology where it creates real, measurable value.</p>
+        </div>
+        <div class="approach-card reveal reveal-delay-3">
+          <svg class="approach-card-icon" viewBox="0 0 36 36" fill="none" stroke="currentColor" stroke-width="1.5">
+            <circle cx="14" cy="14" r="6"/><circle cx="24" cy="24" r="6"/><path d="M18.5 10.5l-1 15"/>
+          </svg>
+          <h3>People & Process</h3>
+          <p>Hiring, training, and process that strengthen the team and culture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Promise to Owners ── -->
+  <section class="promise" id="promise">
+    <div class="container">
+      <div class="promise-intro reveal">
+        <span class="label">Our Promise</span>
+        <h2>When you sell to us, here's what we protect.</h2>
+        <p>The things that never show up in a valuation are the ones we care about most. This is our commitment to you — and to the people who made your business what it is.</p>
+        <div class="promise-sign">— Dylan &amp; Bradley Briscoe</div>
+      </div>
+      <div class="promise-list">
+        <div class="promise-item reveal">
+          <span class="promise-num">01</span>
+          <div>
+            <h3>Your people are looked after.</h3>
+            <p>We keep your team, invest in them, and protect the culture they helped build. Their jobs don't disappear the day the deal closes.</p>
+          </div>
+        </div>
+        <div class="promise-item reveal reveal-delay-1">
+          <span class="promise-num">02</span>
+          <div>
+            <h3>Your name is respected.</h3>
+            <p>The reputation you earned and the relationships you built are stewarded like our own — because from day one, they are.</p>
+          </div>
+        </div>
+        <div class="promise-item reveal reveal-delay-2">
+          <span class="promise-num">03</span>
+          <div>
+            <h3>Your customers keep their partner.</h3>
+            <p>The service and continuity your customers rely on carry on without disruption. No bait-and-switch, no drop in quality.</p>
+          </div>
+        </div>
+        <div class="promise-item reveal reveal-delay-3">
+          <span class="promise-num">04</span>
+          <div>
+            <h3>We're here for the long term.</h3>
+            <p>No stripping, no flipping. We buy to hold and to grow — measured in years and decades, not quarters.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Process ── -->
+  <section class="process" id="process">
+    <div class="container">
+      <div class="process-header">
+        <span class="label reveal">Our Process</span>
+        <h2 class="reveal reveal-delay-1">Simple, direct, and respectful.</h2>
+        <p class="reveal reveal-delay-2">No pressure and complete confidentiality — you decide whether we move forward at every step.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="process-step-num">01</div>
+          <h3>Initial Fit Review</h3>
+          <p>We learn about the business and what matters to you, then tell you honestly whether we're a fit.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-step-num">02</div>
+          <h3>Intro Call</h3>
+          <p>A relaxed conversation about your story and your goals — with no commitment.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-step-num">03</div>
+          <h3>Deal Evaluation</h3>
+          <p>Together we look at the numbers, the operations, and the path forward — openly and at your pace.</p>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-step-num">04</div>
+          <h3>Next Steps</h3>
+          <p>If it's right for both sides, we plan a smooth, respectful transition for you and your team.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Signature Horizontal Gallery ── -->
+  <section class="gallery" id="gallery" aria-label="Grounded in Texas">
+    <div class="gallery-sticky">
+      <div class="gallery-track" id="galleryTrack">
+        <div class="gallery-intro">
+          <span class="label">Grounded in Texas</span>
+          <h2>Built where we come from.</h2>
+          <p>Deep ties to Austin, Dallas, and the communities we serve.</p>
+          <span class="gallery-scroll-hint">
+            Scroll to explore
+            <svg viewBox="0 0 28 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 5h26M22 1l4 4-4 4"/></svg>
+          </span>
+        </div>
+        <figure class="gallery-panel">
+          <div class="gallery-img" style="background-image:url('images/gallery-austin-bluehour.jpg')"></div>
+          <figcaption>
+            <span class="gallery-num">01</span>
+            <span><span class="gallery-cap-text">Austin</span><span class="gallery-cap-sub">Blue Hour Over the River</span></span>
+          </figcaption>
+        </figure>
+        <figure class="gallery-panel">
+          <div class="gallery-img" style="background-image:url('images/gallery-dallas-aerial.jpg')"></div>
+          <figcaption>
+            <span class="gallery-num">02</span>
+            <span><span class="gallery-cap-text">Dallas</span><span class="gallery-cap-sub">The Skyline We Know</span></span>
+          </figcaption>
+        </figure>
+        <figure class="gallery-panel">
+          <div class="gallery-img" style="background-image:url('images/gallery-texas-star.jpg')"></div>
+          <figcaption>
+            <span class="gallery-num">03</span>
+            <span><span class="gallery-cap-text">Texas</span><span class="gallery-cap-sub">Fair Park, Lone Star State</span></span>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="gallery-progress"><div class="gallery-progress-bar" id="galleryProgressBar"></div></div>
+    </div>
+  </section>
+
+  <!-- ── Our Story ── -->
+  <section class="story" id="story">
+    <div class="container">
+      <div class="story-text">
+        <span class="label reveal">Our Story</span>
+        <h2 class="reveal reveal-delay-1">Brothers building with a long-term view.</h2>
+        <p class="reveal reveal-delay-2">Briscoe Capital was founded by brothers Dylan and Bradley Briscoe.</p>
+        <p class="reveal reveal-delay-2">Shaped across South Africa, the UK, and the US — and grounded in Texas, with deep ties to Austin and Dallas.</p>
+        <p class="reveal reveal-delay-3">We bring an operator's mindset and a simple belief: the businesses that hold communities together deserve owners who genuinely care. When we buy a business, we're the ones who show up — protecting what makes it special and growing it for the long term.</p>
+        <div class="story-cta reveal reveal-delay-4">
+          <a href="#contact" class="btn-outline-dark">Meet the Partners</a>
+        </div>
+      </div>
+      <div class="story-photos reveal">
+        <div class="story-photo">
+          <img class="story-photo-img" src="images/headshot-dylan.jpg" alt="Dylan Briscoe, Co-Founder of Briscoe Capital" width="600" height="800" loading="lazy" decoding="async">
+          <div class="story-photo-caption">
+            <strong>Dylan Briscoe</strong>
+            <span>Co-Founder &amp; Partner</span>
+          </div>
+        </div>
+        <div class="story-photo">
+          <div class="story-photo-placeholder">
+            <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+              <circle cx="24" cy="18" r="8"/><path d="M8 42c0-8.837 7.163-16 16-16s16 7.163 16 16"/>
+            </svg>
+          </div>
+          <div class="story-photo-caption">
+            <strong>Bradley Briscoe</strong>
+            <span>Co-Founder &amp; Partner</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Partner Network ── -->
+  <section class="partners" id="partners">
+    <div class="container">
+      <span class="label reveal">Partner Network</span>
+      <h2 class="reveal reveal-delay-1">Built with the right people around the table.</h2>
+      <p class="reveal reveal-delay-2">A trusted network supporting each acquisition from evaluation to long-term ownership.</p>
+      <div class="partners-tags reveal reveal-delay-2">
+        <span class="partner-tag">Lenders</span>
+        <span class="partner-tag">Investors</span>
+        <span class="partner-tag">Operators</span>
+        <span class="partner-tag">Advisors</span>
+        <span class="partner-tag">Attorneys</span>
+        <span class="partner-tag">Accountants</span>
+        <span class="partner-tag">Brokers</span>
+        <span class="partner-tag">Growth Partners</span>
+      </div>
+      <div class="reveal reveal-delay-3">
+        <a href="#contact" class="btn-primary">
+          Partner With Us
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact / Intake ── -->
+  <section class="contact" id="contact">
+    <div class="container">
+      <div class="contact-intro reveal">
+        <span class="label">Start the Conversation</span>
+        <h2>Let's talk about what's next for your business.</h2>
+        <p>Whether you're an owner thinking about the future, or a broker or advisor with a business that fits — tell us a little, and we'll follow up personally.</p>
+        <div class="contact-assurances">
+          <div class="contact-assurance">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+            <span>Every submission is strictly confidential.</span>
+          </div>
+          <div class="contact-assurance">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
+            <span>No pressure, no obligation — just a conversation.</span>
+          </div>
+        </div>
+        <div class="contact-direct">
+          <p>Prefer email? <a href="mailto:dylanbriscoe@gmail.com">dylanbriscoe@gmail.com</a></p>
+          <p>Prefer to talk first? <a href="mailto:dylanbriscoe@gmail.com?subject=Schedule%20a%20call%20with%20Briscoe%20Capital">Schedule a call</a></p>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap reveal reveal-delay-1">
+        <form id="dealForm" class="contact-form" novalidate>
+          <!-- Web3Forms: replace value below with your free access key from https://web3forms.com -->
+          <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+          <input type="hidden" name="subject" value="New submission — Briscoe Capital website">
+          <input type="hidden" name="from_name" value="Briscoe Capital Website">
+          <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">Your name <span>*</span></label>
+              <input id="f-name" name="Name" type="text" required autocomplete="name">
+            </div>
+            <div class="field">
+              <label for="f-email">Email <span>*</span></label>
+              <input id="f-email" name="Email" type="email" required autocomplete="email">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-company">Business name &amp; location <span>*</span></label>
+            <input id="f-company" name="Business" type="text" required placeholder="Company name — City, State">
+          </div>
+
+          <div class="field">
+            <label for="f-message">Tell us a little <span>*</span></label>
+            <textarea id="f-message" name="Message" rows="5" required placeholder="A few words about the business and what matters to you. Revenue, industry, or timeline are welcome but optional."></textarea>
+          </div>
+
+          <label class="consent">
+            <input type="checkbox" name="Consent" value="Yes, confidential contact" required>
+            <span>I understand my submission is confidential, and I consent to be contacted by Briscoe Capital. <span class="req">*</span></span>
+          </label>
+
+          <button type="submit" class="btn-primary form-submit">
+            Submit Confidentially
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+          </button>
+          <p class="form-error" id="formError" role="alert"></p>
+        </form>
+
+        <div class="form-success" id="formSuccess" hidden>
+          <svg viewBox="0 0 52 52" fill="none" stroke="currentColor" stroke-width="2"><circle cx="26" cy="26" r="24"/><path d="M16 27l7 7 13-15"/></svg>
+          <h3>Thank you — we've got it.</h3>
+          <p>Your message is with Dylan &amp; Bradley personally. We'll be in touch soon, and in confidence.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-left">
+        <a href="#" class="nav-logo" aria-label="Briscoe Capital">
+          <img class="logo-mark" src="images/logo-mark.png" alt="Briscoe Capital BC monogram" width="33" height="40" decoding="async" />
+          <span class="nav-logo-text"><strong>BRISCOE</strong><span class="nav-logo-cap">Capital</span></span>
+        </a>
+        <p>Briscoe Capital acquires and grows established small businesses with $300K–$1M in EBITDA and $1M–$5M in enterprise value.</p>
+      </div>
+      <div class="footer-right">
+        <p>Austin & Dallas, Texas</p>
+        <p><a href="mailto:dylanbriscoe@gmail.com">dylanbriscoe@gmail.com</a></p>
+      </div>
+      <div class="footer-divider"></div>
+      <div class="footer-bottom" style="width:100%;text-align:center;">
+        &copy; 2026 Briscoe Capital. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const nav = document.getElementById('nav');
+    const heroBgImg = document.getElementById('heroBgImg');
+    const hero = document.getElementById('hero');
+    const gallery = document.getElementById('gallery');
+    const galleryTrack = document.getElementById('galleryTrack');
+    const galleryBar = document.getElementById('galleryProgressBar');
+    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+
+    // Combined rAF-throttled scroll handler
+    let ticking = false;
+    function updateScroll() {
+      const y = window.scrollY;
+
+      // Nav background
+      nav.classList.toggle('scrolled', y > 40);
+
+      // Hero zoom-parallax: image scales + drifts as hero scrolls away
+      if (heroBgImg && hero && !reduceMotion) {
+        const h = hero.offsetHeight;
+        const p = Math.min(Math.max(y / h, 0), 1);
+        heroBgImg.style.transform = `scale(${(1.04 + p * 0.14).toFixed(4)}) translateY(${(p * 6).toFixed(2)}%)`;
+      }
+
+      // Pinned horizontal gallery
+      if (gallery && galleryTrack && !isMobile()) {
+        const rect = gallery.getBoundingClientRect();
+        const total = gallery.offsetHeight - window.innerHeight;
+        const scrolled = Math.min(Math.max(-rect.top, 0), total);
+        const progress = total > 0 ? scrolled / total : 0;
+        const maxX = Math.max(galleryTrack.scrollWidth - window.innerWidth, 0);
+        galleryTrack.style.transform = `translateX(${(-progress * maxX).toFixed(1)}px)`;
+        if (galleryBar) galleryBar.style.width = (progress * 100).toFixed(1) + '%';
+      }
+
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateScroll);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => {
+      if (galleryTrack && isMobile()) galleryTrack.style.transform = 'none';
+      updateScroll();
+    }, { passive: true });
+    updateScroll();
+
+    // Mobile nav toggle
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+
+    // Intersection Observer for reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id === '#') return;
+        e.preventDefault();
+        const target = document.querySelector(id);
+        if (target) {
+          const offset = nav.offsetHeight + 20;
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'smooth' });
+        }
+      });
+    });
+  </script>
+  <script>
+    // ── Deal intake form (Web3Forms) ──
+    (function () {
+      const form = document.getElementById('dealForm');
+      if (!form) return;
+      const errEl = document.getElementById('formError');
+      const successEl = document.getElementById('formSuccess');
+      const btn = form.querySelector('.form-submit');
+      const keyField = form.querySelector('[name="access_key"]');
+      const keySet = keyField && keyField.value.indexOf('YOUR_') === -1;
+
+      form.addEventListener('submit', async function (e) {
+        e.preventDefault();
+        errEl.classList.remove('show');
+
+        // native validation
+        if (!form.checkValidity()) { form.reportValidity(); return; }
+        // honeypot — silently drop bots
+        const hp = form.querySelector('[name="botcheck"]');
+        if (hp && hp.checked) return;
+
+        const original = btn.innerHTML;
+        btn.disabled = true;
+        btn.textContent = 'Sending…';
+
+        try {
+          if (!keySet) throw new Error('access key not configured');
+          const res = await fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: { 'Accept': 'application/json' },
+            body: new FormData(form)
+          });
+          const json = await res.json();
+          if (!json.success) throw new Error(json.message || 'submission failed');
+          form.hidden = true;
+          successEl.hidden = false;
+          successEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        } catch (err) {
+          btn.disabled = false;
+          btn.innerHTML = original;
+          errEl.textContent = 'Sorry — we couldn’t send that just now. Please email us directly at dylanbriscoe@gmail.com.';
+          errEl.classList.add('show');
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

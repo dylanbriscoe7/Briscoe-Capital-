@@ -1,0 +1,18 @@
+# System
+.DS_Store
+Thumbs.db
+*.log
+
+# Node
+node_modules/
+npm-debug.log*
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Deploy
+.vercel/
+.env
+.env.*
