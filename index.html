@@ -1765,6 +1765,17 @@
       const keyField = form.querySelector('[name="access_key"]');
       const keySet = keyField && keyField.value.indexOf('YOUR_') === -1;
 
+      // friendlier email validation — flag obviously-broken addresses
+      var emailField = form.querySelector('#f-email');
+      if (emailField) {
+        emailField.addEventListener('input', function () {
+          var v = emailField.value.trim();
+          var at = v.indexOf('@'), dot = v.lastIndexOf('.');
+          var looksOk = at > 0 && dot > at + 1 && dot < v.length - 1 && v.indexOf(' ') === -1;
+          emailField.setCustomValidity(v && !looksOk ? 'Please enter a valid email address so we can reach you.' : '');
+        });
+      }
+
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
         errEl.classList.remove('show');
@@ -1803,7 +1814,14 @@
           console.error('Web3Forms submit failed:', err);
           btn.disabled = false;
           btn.innerHTML = original;
-          errEl.textContent = 'Could not send — ' + ((err && err.message) || 'network error') + '. Please email dylanbriscoe@gmail.com directly.';
+          var reason = ((err && err.message) || '').toLowerCase();
+          var msg = 'Something went wrong sending your message. Please email us directly at dylanbriscoe@gmail.com.';
+          if (reason.indexOf('email') !== -1) {
+            msg = 'That email address did not go through — please double-check it, or email us directly at dylanbriscoe@gmail.com.';
+          } else if (reason.indexOf('key') !== -1 || reason.indexOf('config') !== -1) {
+            msg = 'The form is still being set up on our end. Please email us directly at dylanbriscoe@gmail.com.';
+          }
+          errEl.textContent = msg;
           errEl.classList.add('show');
         }
       });
