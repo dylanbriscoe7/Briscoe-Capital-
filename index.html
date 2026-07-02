@@ -7,10 +7,12 @@
   <meta name="description" content="Operator-owners acquiring and growing established small businesses across Texas — a confidential, long-term home for the business you built.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="images/favicon-64.png">
   <link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
+  <link rel="preload" as="image" href="images/hero-austin-sunset.jpg" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="images/hero-austin-sunset-m.jpg" media="(max-width: 768px)">
 
   <!-- Canonical & theme -->
   <link rel="canonical" href="https://briscoe-capital.com/">
@@ -81,7 +83,7 @@
       --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; overflow-x: clip; }
 
     body {
       font-family: var(--sans);
@@ -90,7 +92,30 @@
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
       overflow-x: hidden;
+      overflow-x: clip;
     }
+    body.nav-open { overflow: hidden; }
+
+    ::selection { background: var(--orange); color: #fff; }
+    section[id] { scroll-margin-top: 92px; }
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+    }
+    .skip-link {
+      position: absolute;
+      top: -56px;
+      left: 16px;
+      z-index: 300;
+      background: var(--navy);
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 0.8rem;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      transition: top 0.25s var(--ease);
+    }
+    .skip-link:focus { top: 12px; }
 
     /* ── Utility ── */
     .container { max-width: 1280px; margin: 0 auto; padding: 0 clamp(24px, 5vw, 80px); }
@@ -108,8 +133,8 @@
     /* ── Reveal animation ── */
     .reveal {
       opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease-out);
+      transform: translateY(28px);
+      transition: opacity 0.9s var(--ease), transform 1s var(--ease-out);
     }
     .reveal.visible {
       opacity: 1;
@@ -132,8 +157,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), backdrop-filter 0.4s var(--ease);
+      transition: background 0.4s var(--ease), box-shadow 0.4s var(--ease), backdrop-filter 0.4s var(--ease), transform 0.45s var(--ease-out);
     }
+    .nav.nav-hide { transform: translateY(-100%); }
     .nav.scrolled {
       background: rgba(24, 27, 62, 0.92);
       backdrop-filter: blur(20px);
@@ -229,8 +255,11 @@
       height: 2px;
       background: var(--text-white);
       margin: 5px 0;
-      transition: transform 0.3s, opacity 0.3s;
+      transition: transform 0.3s var(--ease), opacity 0.3s;
     }
+    .nav-toggle.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle.active span:nth-child(2) { opacity: 0; }
+    .nav-toggle.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     @media (max-width: 900px) {
       .nav-toggle { display: block; }
@@ -238,22 +267,39 @@
         position: fixed;
         top: 0;
         right: -100%;
-        width: 300px;
+        width: min(320px, 84vw);
         height: 100vh;
+        height: 100dvh;
         background: var(--navy);
         flex-direction: column;
-        padding: 100px 40px 40px;
+        align-items: flex-start;
+        padding: 108px 40px 40px;
         gap: 28px;
-        transition: right 0.4s var(--ease-out);
+        transition: right 0.45s var(--ease-out);
+        overscroll-behavior: contain;
+        box-shadow: -24px 0 60px rgba(0,0,0,0.35);
+      }
+      .nav-links::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background: rgba(10, 12, 30, 0.55);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.4s var(--ease);
       }
       .nav-links.open { right: 0; }
-      .nav-links a { font-size: 0.85rem; }
+      .nav-links.open::before { opacity: 1; pointer-events: auto; }
+      .nav-links a { font-size: 0.95rem; padding: 6px 0; }
+      .nav-links .nav-cta { margin-top: 10px; }
     }
 
     /* ── Hero ── */
     .hero {
       position: relative;
       min-height: 100vh;
+      min-height: 100svh;
       display: flex;
       align-items: flex-end;
       padding-bottom: clamp(60px, 8vh, 120px);
@@ -275,6 +321,11 @@
       background: url('images/hero-austin-sunset.jpg') center 40% / cover no-repeat;
       transform: scale(1.04);
       will-change: transform;
+      animation: heroBgIn 1.9s var(--ease-out) both;
+    }
+    @keyframes heroBgIn {
+      from { transform: scale(1.13); }
+      to   { transform: scale(1.04); }
     }
     .hero-overlay {
       position: absolute;
@@ -289,9 +340,22 @@
       width: 100%;
     }
     .hero-content { max-width: 960px; }
+    .hero .label { display: inline-block; }
+    .hero-content > * {
+      opacity: 0;
+      animation: heroRise 1s var(--ease-out) forwards;
+    }
+    .hero-content > *:nth-child(1) { animation-delay: 0.2s; }
+    .hero-content > *:nth-child(2) { animation-delay: 0.34s; }
+    .hero-content > *:nth-child(3) { animation-delay: 0.52s; }
+    .hero-content > *:nth-child(4) { animation-delay: 0.68s; }
+    @keyframes heroRise {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: none; }
+    }
     .hero h1 {
       font-family: var(--serif);
-      font-size: clamp(3rem, 7.6vw, 6.5rem);
+      font-size: clamp(2.7rem, 7.6vw, 6.5rem);
       font-weight: 400;
       line-height: 1.03;
       color: var(--text-white);
@@ -348,6 +412,20 @@
       transition: border-color 0.3s, background 0.3s;
     }
     .btn-secondary:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.05); }
+    .btn-primary svg { transition: transform 0.3s var(--ease); }
+    .btn-primary:hover svg { transform: translateX(3px); }
+    .btn-primary:active, .btn-secondary:active, .btn-outline-dark:active { transform: translateY(0) scale(0.985); }
+
+    @media (max-width: 600px) {
+      .hero { padding-bottom: 48px; }
+      .hero h1 { line-height: 1.07; margin: 18px 0 26px; }
+      .hero .label { font-size: 0.62rem; letter-spacing: 0.16em; }
+      .hero-ctas { flex-direction: column; margin-top: 32px; gap: 12px; }
+      .hero-ctas .btn-primary, .hero-ctas .btn-secondary { width: 100%; justify-content: center; }
+    }
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 2.35rem; }
+    }
 
     /* ── Credibility Bar ── */
     .credibility {
@@ -423,8 +501,18 @@
       width: 100%;
       height: 100%;
       overflow: hidden;
-      background: url('images/mission-dallas-frame.jpg') center / cover no-repeat;
+      background: var(--cream-dark);
     }
+    .mission-image-inner .plx, .criteria-image-inner .plx {
+      position: absolute;
+      inset: -9% 0;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      will-change: transform;
+    }
+    .mission-image-inner .plx { background-image: url('images/mission-dallas-frame.jpg'); }
+    .criteria-image-inner .plx { background-image: url('images/criteria-texas-neon.jpg'); }
     .mission-text h2 {
       font-family: var(--serif);
       font-size: clamp(2rem, 4vw, 3.2rem);
@@ -443,7 +531,8 @@
 
     @media (max-width: 900px) {
       .mission .container { grid-template-columns: 1fr; }
-      .mission-image { max-width: 500px; }
+      .mission-image { max-width: 500px; margin-right: 18px; }
+      .mission-image::before { inset: 18px -18px -18px 18px; }
     }
 
     /* ── Who We Work With (Collaboration) ── */
@@ -565,13 +654,14 @@
       width: 100%;
       aspect-ratio: 3/4;
       overflow: hidden;
-      background: url('images/criteria-texas-neon.jpg') center / cover no-repeat;
+      background: var(--navy-light);
       box-shadow: 28px 28px 0 0 var(--navy);
     }
 
     @media (max-width: 900px) {
       .criteria .container { grid-template-columns: 1fr; }
-      .criteria-image { display: none; }
+      .criteria-image { min-height: 0; margin-top: 48px; }
+      .criteria-image-inner { position: relative; top: 0; aspect-ratio: 16/10; box-shadow: none; }
     }
 
     /* ── Our Approach ── */
@@ -846,6 +936,7 @@
       width: clamp(300px, 34vw, 520px);
       margin: 0;
       position: relative;
+      overflow: hidden;
     }
     .gallery-img {
       width: 100%;
@@ -853,7 +944,13 @@
       background-size: cover;
       background-position: center;
       position: relative;
+      will-change: transform;
+      backface-visibility: hidden;
     }
+    .gi-1 { background-image: url('images/gallery-austin-bluehour.jpg'); }
+    .gi-2 { background-image: url('images/gallery-dallas-aerial.jpg'); }
+    .gi-3 { background-image: url('images/gallery-texas-star.jpg'); }
+    .hint-m { display: none; }
     .gallery-img::after {
       content: '';
       position: absolute;
@@ -902,10 +999,14 @@
         scroll-snap-type: x mandatory;
         -webkit-overflow-scrolling: touch;
         padding: 0 24px 20px;
+        scrollbar-width: none;
       }
+      .gallery-track::-webkit-scrollbar { display: none; }
       .gallery-intro { width: 80vw; scroll-snap-align: start; }
       .gallery-panel { width: 75vw; scroll-snap-align: center; }
       .gallery-progress { display: none; }
+      .hint-d { display: none; }
+      .hint-m { display: inline; }
     }
 
     /* ── Story ── */
@@ -974,7 +1075,9 @@
       height: 100%;
       object-fit: cover;
       object-position: center 18%;
+      transition: transform 1.4s var(--ease-out);
     }
+    .story-photo:hover .story-photo-img { transform: scale(1.045); }
     .story-photo-caption {
       position: absolute;
       left: 0;
@@ -1199,11 +1302,37 @@
 
     @media (max-width: 600px) {
       .footer .container { flex-direction: column; text-align: center; }
+      .footer-left { display: flex; flex-direction: column; align-items: center; }
       .footer-right { text-align: center; }
+    }
+
+    /* ── Mobile image variants (74% lighter payload) ── */
+    @media (max-width: 768px) {
+      .hero-bg-img { background-image: url('images/hero-austin-sunset-m.jpg'); }
+      .mission-image-inner .plx { background-image: url('images/mission-dallas-frame-m.jpg'); }
+      .criteria-image-inner .plx { background-image: url('images/criteria-texas-neon-m.jpg'); }
+      .gi-1 { background-image: url('images/gallery-austin-bluehour-m.jpg'); }
+      .gi-2 { background-image: url('images/gallery-dallas-aerial-m.jpg'); }
+      .gi-3 { background-image: url('images/gallery-texas-star-m.jpg'); }
+    }
+
+    /* ── Reduced motion: calm everything ── */
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal, .hero-content > * {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+      }
+      .hero-bg-img { animation: none !important; transform: scale(1.04) !important; }
+      .story-photo-img, .btn-primary svg { transition: none !important; }
     }
   </style>
 </head>
 <body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
 
   <!-- ── Navigation ── -->
   <nav class="nav" id="nav">
@@ -1218,10 +1347,12 @@
       <li><a href="#partners">Partners</a></li>
       <li><a href="#contact" class="nav-cta">Submit Deal</a></li>
     </ul>
-    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="navLinks">
       <span></span><span></span><span></span>
     </button>
   </nav>
+
+  <main id="main">
 
   <!-- ── Hero ── -->
   <section class="hero" id="hero">
@@ -1277,7 +1408,7 @@
   <section class="mission" id="strategy">
     <div class="container">
       <div class="mission-image reveal">
-        <div class="mission-image-inner" role="img" aria-label="Business growth illustration"></div>
+        <div class="mission-image-inner" role="img" aria-label="Downtown Dallas skyline seen through the Reunion Tower frame"><div class="plx" data-plx="0.10"></div></div>
       </div>
       <div class="mission-text">
         <span class="label reveal">Our Mission</span>
@@ -1355,7 +1486,7 @@
         <p class="criteria-note reveal">We're especially drawn to founder- and family-owned businesses where the owner cares what happens next.</p>
       </div>
       <div class="criteria-image reveal">
-        <div class="criteria-image-inner" role="img" aria-label="Modern business buildings"></div>
+        <div class="criteria-image-inner" role="img" aria-label="Red neon Texas sign against a pale sky"><div class="plx" data-plx="0.12"></div></div>
       </div>
     </div>
   </section>
@@ -1485,26 +1616,26 @@
           <h2>Built where we come from.</h2>
           <p>Deep ties to Austin, Dallas, and the communities we serve.</p>
           <span class="gallery-scroll-hint">
-            Scroll to explore
+            <span class="hint-d">Scroll to explore</span><span class="hint-m">Swipe to explore</span>
             <svg viewBox="0 0 28 10" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M0 5h26M22 1l4 4-4 4"/></svg>
           </span>
         </div>
         <figure class="gallery-panel">
-          <div class="gallery-img" style="background-image:url('images/gallery-austin-bluehour.jpg')"></div>
+          <div class="gallery-img gi-1"></div>
           <figcaption>
             <span class="gallery-num">01</span>
             <span><span class="gallery-cap-text">Austin</span><span class="gallery-cap-sub">Blue Hour Over the River</span></span>
           </figcaption>
         </figure>
         <figure class="gallery-panel">
-          <div class="gallery-img" style="background-image:url('images/gallery-dallas-aerial.jpg')"></div>
+          <div class="gallery-img gi-2"></div>
           <figcaption>
             <span class="gallery-num">02</span>
             <span><span class="gallery-cap-text">Dallas</span><span class="gallery-cap-sub">The Skyline We Know</span></span>
           </figcaption>
         </figure>
         <figure class="gallery-panel">
-          <div class="gallery-img" style="background-image:url('images/gallery-texas-star.jpg')"></div>
+          <div class="gallery-img gi-3"></div>
           <figcaption>
             <span class="gallery-num">03</span>
             <span><span class="gallery-cap-text">Texas</span><span class="gallery-cap-sub">Fair Park, Lone Star State</span></span>
@@ -1649,6 +1780,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── Footer ── -->
   <footer class="footer">
     <div class="container">
@@ -1677,22 +1810,63 @@
     const gallery = document.getElementById('gallery');
     const galleryTrack = document.getElementById('galleryTrack');
     const galleryBar = document.getElementById('galleryProgressBar');
+    const galleryImgs = galleryTrack ? Array.from(galleryTrack.querySelectorAll('.gallery-img')) : [];
+    const plxLayers = Array.from(document.querySelectorAll('[data-plx]'));
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
 
-    // Combined rAF-throttled scroll handler
+    // ── Gallery: damped follow (lerp) + counter-parallax inside panels ──
+    let galTarget = 0, galCurrent = 0, galRunning = false;
+    function galParallax() {
+      const vc = window.innerWidth / 2;
+      galleryImgs.forEach(img => {
+        const r = img.getBoundingClientRect();
+        if (r.right < -80 || r.left > window.innerWidth + 80) return;
+        const off = (r.left + r.width / 2) - vc;
+        const shift = Math.max(-26, Math.min(26, off * -0.05));
+        img.style.transform = 'translate3d(' + shift.toFixed(1) + 'px,0,0) scale(1.08)';
+      });
+    }
+    function galTick() {
+      galCurrent += (galTarget - galCurrent) * 0.14;
+      if (Math.abs(galTarget - galCurrent) < 0.4) galCurrent = galTarget;
+      galleryTrack.style.transform = 'translate3d(' + (-galCurrent).toFixed(1) + 'px,0,0)';
+      galParallax();
+      if (galCurrent !== galTarget) requestAnimationFrame(galTick);
+      else galRunning = false;
+    }
+
+    // ── Master rAF-throttled scroll handler ──
+    let lastY = window.scrollY;
     let ticking = false;
     function updateScroll() {
       const y = window.scrollY;
 
-      // Nav background
+      // Nav: glass background + hide on scroll down, reveal on scroll up
       nav.classList.toggle('scrolled', y > 40);
+      const menuOpen = document.body.classList.contains('nav-open');
+      if (menuOpen || y < 120 || y < lastY - 2) nav.classList.remove('nav-hide');
+      else if (y > lastY + 6) nav.classList.add('nav-hide');
+      lastY = y;
 
-      // Hero zoom-parallax: image scales + drifts as hero scrolls away
+      // Hero zoom-parallax
       if (heroBgImg && hero && !reduceMotion) {
         const h = hero.offsetHeight;
         const p = Math.min(Math.max(y / h, 0), 1);
-        heroBgImg.style.transform = `scale(${(1.04 + p * 0.14).toFixed(4)}) translateY(${(p * 6).toFixed(2)}%)`;
+        heroBgImg.style.transform = 'scale(' + (1.04 + p * 0.14).toFixed(4) + ') translateY(' + (p * 6).toFixed(2) + '%)';
+      }
+
+      // Section-image parallax (desktop only)
+      if (!reduceMotion && !isMobile()) {
+        const vh = window.innerHeight;
+        plxLayers.forEach(el => {
+          const r = el.parentElement.getBoundingClientRect();
+          if (r.bottom < -60 || r.top > vh + 60) return;
+          const off = (r.top + r.height / 2) - vh / 2;
+          const speed = parseFloat(el.dataset.plx) || 0.1;
+          const shift = Math.max(-24, Math.min(24, off * -speed));
+          el.style.transform = 'translate3d(0,' + shift.toFixed(1) + 'px,0)';
+        });
       }
 
       // Pinned horizontal gallery
@@ -1702,7 +1876,14 @@
         const scrolled = Math.min(Math.max(-rect.top, 0), total);
         const progress = total > 0 ? scrolled / total : 0;
         const maxX = Math.max(galleryTrack.scrollWidth - window.innerWidth, 0);
-        galleryTrack.style.transform = `translateX(${(-progress * maxX).toFixed(1)}px)`;
+        galTarget = progress * maxX;
+        if (reduceMotion) {
+          galCurrent = galTarget;
+          galleryTrack.style.transform = 'translate3d(' + (-galTarget).toFixed(1) + 'px,0,0)';
+        } else if (!galRunning) {
+          galRunning = true;
+          requestAnimationFrame(galTick);
+        }
         if (galleryBar) galleryBar.style.width = (progress * 100).toFixed(1) + '%';
       }
 
@@ -1716,18 +1897,31 @@
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', () => {
-      if (galleryTrack && isMobile()) galleryTrack.style.transform = 'none';
+      if (isMobile()) {
+        if (galleryTrack) galleryTrack.style.transform = 'none';
+        galleryImgs.forEach(i => { i.style.transform = 'none'; });
+        plxLayers.forEach(el => { el.style.transform = 'none'; });
+      }
       updateScroll();
     }, { passive: true });
     updateScroll();
 
-    // Mobile nav toggle
+    // ── Mobile nav: scroll lock, aria, Escape, backdrop tap ──
     const toggle = document.getElementById('navToggle');
     const links = document.getElementById('navLinks');
-    toggle.addEventListener('click', () => links.classList.toggle('open'));
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    function setMenu(open) {
+      links.classList.toggle('open', open);
+      toggle.classList.toggle('active', open);
+      document.body.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) nav.classList.remove('nav-hide');
+    }
+    toggle.addEventListener('click', () => setMenu(!links.classList.contains('open')));
+    links.addEventListener('click', (e) => { if (e.target === links) setMenu(false); });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
 
-    // Intersection Observer for reveal animations
+    // ── Reveal on scroll ──
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1735,11 +1929,10 @@
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
+    }, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-    // Smooth scroll for anchor links
+    // ── Smooth scroll with fixed-nav offset ──
     document.querySelectorAll('a[href^="#"]').forEach(a => {
       a.addEventListener('click', (e) => {
         const id = a.getAttribute('href');
