@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://briscoe-capital.com/sitemap.xml
+Sitemap: https://www.briscoe-capital.com/sitemap.xml
