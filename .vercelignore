@@ -1,0 +1,10 @@
+# Local dev + internal docs — keep out of production
+server.js
+ROADMAP.md
+website-copy.md
+
+# Original source photography (optimized copies live in /images)
+*-unsplash.jpg
+
+# Repo meta
+.gitignore
