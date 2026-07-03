@@ -1190,9 +1190,9 @@
     .contact .container {
       position: relative; z-index: 1;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: clamp(40px, 6vw, 88px);
-      align-items: center;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(40px, 6vw, 80px);
+      align-items: start;
     }
     .contact-intro, .contact-form-wrap { min-width: 0; }
     .contact-intro h2 {
@@ -1216,43 +1216,45 @@
     .contact-direct a:hover { text-decoration: underline; }
 
     .contact-form-wrap {
-      background: #fff;
-      padding: clamp(30px, 3vw, 46px);
-      border-top: 3px solid var(--orange);
-      box-shadow: 0 30px 60px -24px rgba(0,0,0,0.5);
+      background: transparent;
+      padding: 0;
     }
-    .contact-form { display: flex; flex-direction: column; gap: 20px; }
+    .contact-form { display: flex; flex-direction: column; gap: 22px; }
     .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
     .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-    .field { display: flex; flex-direction: column; gap: 8px; }
-    .field label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-mid); }
+    .field { display: flex; flex-direction: column; gap: 9px; }
+    .field label { font-size: 0.92rem; font-weight: 500; color: var(--text-white); padding-left: 6px; }
     .field label span { color: var(--orange); }
     .field input, .field textarea {
-      font-family: var(--sans); font-size: 1rem; color: var(--text-dark);
-      background: #fbfaf8; border: 1px solid #e4e0d7; border-radius: 0;
-      padding: 14px 16px; width: 100%;
-      transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      font-family: var(--sans); font-size: 1rem; color: #fff;
+      background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px; padding: 15px 22px; width: 100%;
+      transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
     }
-    .field input::placeholder, .field textarea::placeholder { color: #a8a49b; }
+    .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.4); }
     .field input:focus, .field textarea:focus {
-      outline: none; border-color: var(--orange); background: #fff;
-      box-shadow: 0 0 0 3px rgba(252,47,0,0.12);
+      outline: none; border-color: var(--orange); background: rgba(255,255,255,0.09);
+      box-shadow: 0 0 0 3px rgba(252,47,0,0.18);
     }
-    .field textarea { resize: vertical; min-height: 128px; }
-    .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 0.85rem; color: var(--text-mid); line-height: 1.5; cursor: pointer; }
-    .consent input { margin-top: 3px; width: 16px; height: 16px; accent-color: var(--orange); flex-shrink: 0; }
-    .consent .req { color: var(--orange); }
-    .form-submit { justify-content: center; margin-top: 6px; width: 100%; padding-top: 17px; padding-bottom: 17px; }
-    .form-error { color: #b3200a; font-size: 0.85rem; display: none; }
+    .field textarea { border-radius: 22px; min-height: 104px; resize: vertical; padding: 16px 22px; }
+    .form-foot {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 20px; margin-top: 6px;
+    }
+    .form-consent-note { font-size: 0.78rem; line-height: 1.5; color: var(--text-light); max-width: 330px; }
+    .form-submit { width: auto; border-radius: 999px; padding: 15px 44px; flex-shrink: 0; }
+    .form-error { color: #ff8a72; font-size: 0.85rem; display: none; margin-top: 4px; padding-left: 6px; }
     .form-error.show { display: block; }
     .form-success { text-align: center; padding: clamp(30px, 4vw, 56px) 20px; }
     .form-success svg { width: 56px; height: 56px; color: var(--orange); margin-bottom: 18px; }
-    .form-success h3 { font-family: var(--serif); font-size: 1.8rem; font-weight: 400; color: var(--text-dark); margin-bottom: 12px; }
-    .form-success p { color: var(--text-mid); line-height: 1.65; max-width: 380px; margin: 0 auto; }
+    .form-success h3 { font-family: var(--serif); font-size: 1.9rem; font-weight: 400; color: var(--text-white); margin-bottom: 12px; }
+    .form-success p { color: var(--text-light); line-height: 1.65; max-width: 380px; margin: 0 auto; }
 
     @media (max-width: 860px) {
-      .contact .container { grid-template-columns: 1fr; gap: 44px; align-items: start; }
+      .contact .container { grid-template-columns: 1fr; gap: 40px; align-items: start; }
       .form-row { grid-template-columns: 1fr; }
+      .form-foot { flex-direction: column; align-items: stretch; gap: 16px; }
+      .form-submit { width: 100%; justify-content: center; }
     }
 
     /* ── Footer ── */
@@ -1712,18 +1714,8 @@
     <div class="container">
       <div class="contact-intro reveal">
         <span class="label">Start the Conversation</span>
-        <h2>Let's talk about what's next for your business.</h2>
-        <p>Whether you're an owner thinking about the future, or a broker or advisor with a business that fits — tell us a little, and we'll follow up personally.</p>
-        <div class="contact-assurances">
-          <div class="contact-assurance">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="5" y="11" width="14" height="9" rx="1.5"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
-            <span>Every submission is strictly confidential.</span>
-          </div>
-          <div class="contact-assurance">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M21 11.5a8.38 8.38 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.38 8.38 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.38 8.38 0 0 1 21 11.5z"/></svg>
-            <span>No pressure, no obligation — just a conversation.</span>
-          </div>
-        </div>
+        <h2>Let's talk about what's next.</h2>
+        <p>Share a few details and we'll follow up personally — in confidence, and with no pressure.</p>
         <div class="contact-direct">
           <p>Prefer email? <a href="mailto:dylanbriscoe@gmail.com">dylanbriscoe@gmail.com</a></p>
           <p>Prefer to talk first? <a href="https://calendly.com/dylanbriscoe/30min" target="_blank" rel="noopener noreferrer">Schedule a call</a></p>
@@ -1740,34 +1732,43 @@
 
           <div class="form-row">
             <div class="field">
-              <label for="f-name">Your name <span>*</span></label>
-              <input id="f-name" name="Name" type="text" required autocomplete="name">
+              <label for="f-first">First name <span>*</span></label>
+              <input id="f-first" name="First Name" type="text" required autocomplete="given-name" placeholder="First name">
             </div>
             <div class="field">
-              <label for="f-email">Email <span>*</span></label>
-              <input id="f-email" name="Email" type="email" required autocomplete="email">
+              <label for="f-last">Last name</label>
+              <input id="f-last" name="Last Name" type="text" autocomplete="family-name" placeholder="Last name">
             </div>
           </div>
 
           <div class="field">
-            <label for="f-company">Business name &amp; location <span>*</span></label>
-            <input id="f-company" name="Business" type="text" required placeholder="Company name — City, State">
+            <label for="f-email">Email <span>*</span></label>
+            <input id="f-email" name="Email" type="email" required autocomplete="email" placeholder="you@company.com">
+          </div>
+
+          <div class="form-row">
+            <div class="field">
+              <label for="f-company">Company name <span>*</span></label>
+              <input id="f-company" name="Company Name" type="text" required placeholder="Company name">
+            </div>
+            <div class="field">
+              <label for="f-website">Company website</label>
+              <input id="f-website" name="Company Website" type="text" autocomplete="url" placeholder="companyname.com">
+            </div>
           </div>
 
           <div class="field">
-            <label for="f-message">Tell us a little <span>*</span></label>
-            <textarea id="f-message" name="Message" rows="5" required placeholder="A few words about the business and what matters to you. Revenue, industry, or timeline are welcome but optional."></textarea>
+            <label for="f-message">Describe your company in one sentence <span>*</span></label>
+            <textarea id="f-message" name="Description" rows="3" required placeholder="What your business does — and what matters to you about its future."></textarea>
           </div>
 
-          <label class="consent">
-            <input type="checkbox" name="Consent" value="Yes, confidential contact" required>
-            <span>I understand my submission is confidential, and I consent to be contacted by Briscoe Capital. <span class="req">*</span></span>
-          </label>
-
-          <button type="submit" class="btn-primary form-submit">
-            Submit Confidentially
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-          </button>
+          <div class="form-foot">
+            <p class="form-consent-note">Strictly confidential. By sending, you agree to be contacted by Briscoe Capital.</p>
+            <button type="submit" class="btn-primary form-submit">
+              Send
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+          </div>
           <p class="form-error" id="formError" role="alert"></p>
         </form>
 
