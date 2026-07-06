@@ -16,7 +16,7 @@
 
   <!-- Canonical & theme -->
   <link rel="canonical" href="https://www.briscoe-capital.com/">
-  <meta name="theme-color" content="#181b3e">
+  <meta name="theme-color" content="#15171c">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph -->
@@ -64,17 +64,18 @@
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --navy: #181b3e;
-      --navy-mid: #1f2350;
-      --navy-light: #2a2f63;
-      --orange: #fc2f00;
-      --orange-light: #ff4a24;
-      --orange-muted: rgba(252, 47, 0, 0.14);
-      --cream: #f7f5f1;
-      --cream-dark: #ebe8e2;
+      --navy: #15171c;
+      --navy-mid: #1c1f26;
+      --navy-light: #262a33;
+      --orange: #d14a1c;
+      --orange-light: #ff8a63;
+      --orange-d: #ff6b3d;
+      --orange-muted: rgba(255, 107, 61, 0.14);
+      --cream: #f2f3f1;
+      --cream-dark: #e9eae7;
       --white: #ffffff;
-      --text-dark: #16172a;
-      --text-mid: #5a5b66;
+      --text-dark: #141519;
+      --text-mid: #5c5e64;
       --text-light: rgba(255, 255, 255, 0.72);
       --text-white: #ffffff;
       --serif: 'Instrument Serif', Georgia, serif;
@@ -161,7 +162,7 @@
     }
     .nav.nav-hide { transform: translateY(-100%); }
     .nav.scrolled {
-      background: rgba(24, 27, 62, 0.92);
+      background: rgba(21, 23, 28, 0.92);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
       box-shadow: 0 1px 0 rgba(255,255,255,0.05);
@@ -230,10 +231,11 @@
       font-size: 0.7rem !important;
       font-weight: 600 !important;
       letter-spacing: 0.12em !important;
-      padding: 10px 24px;
-      background: var(--orange);
-      color: var(--text-white) !important;
+      padding: 10px 26px;
+      background: var(--orange-d);
+      color: var(--navy) !important;
       border: none;
+      border-radius: 999px;
       cursor: pointer;
       transition: background 0.3s, transform 0.2s;
       text-decoration: none;
@@ -284,7 +286,7 @@
         position: fixed;
         inset: 0;
         z-index: -1;
-        background: rgba(10, 12, 30, 0.55);
+        background: rgba(8, 9, 12, 0.55);
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.4s var(--ease);
@@ -331,8 +333,8 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(180deg, rgba(24,27,62,0.30) 0%, rgba(24,27,62,0.18) 30%, rgba(24,27,62,0.55) 68%, rgba(24,27,62,0.96) 100%),
-        linear-gradient(90deg, rgba(24,27,62,0.78) 0%, rgba(24,27,62,0.35) 45%, rgba(24,27,62,0.05) 100%);
+        linear-gradient(180deg, rgba(21,23,28,0.30) 0%, rgba(21,23,28,0.18) 30%, rgba(21,23,28,0.55) 68%, rgba(21,23,28,0.96) 100%),
+        linear-gradient(90deg, rgba(21,23,28,0.78) 0%, rgba(21,23,28,0.35) 45%, rgba(21,23,28,0.05) 100%);
     }
     .hero .container {
       position: relative;
@@ -379,8 +381,8 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      padding: 16px 32px;
-      background: var(--orange);
+      padding: 16px 34px;
+      background: var(--orange-d);
       color: var(--navy);
       font-family: var(--sans);
       font-size: 0.75rem;
@@ -389,6 +391,7 @@
       text-transform: uppercase;
       text-decoration: none;
       border: none;
+      border-radius: 999px;
       cursor: pointer;
       transition: background 0.3s, transform 0.2s;
     }
@@ -408,6 +411,7 @@
       text-transform: uppercase;
       text-decoration: none;
       border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
       cursor: pointer;
       transition: border-color 0.3s, background 0.3s;
     }
@@ -491,7 +495,7 @@
       content: '';
       position: absolute;
       inset: 28px -28px -28px 28px;
-      border: 1px solid rgba(252, 47, 0, 0.55);
+      border: 1px solid rgba(255, 107, 61, 0.55);
       pointer-events: none;
       z-index: 0;
     }
@@ -560,7 +564,7 @@
       transition: border-color 0.4s, background 0.4s;
     }
     .collaboration-card:hover {
-      border-color: rgba(252,47,0,0.3);
+      border-color: rgba(255,107,61,0.3);
       background: rgba(255,255,255,0.02);
     }
     .collaboration-card h3 {
@@ -955,7 +959,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, transparent 55%, rgba(24,27,62,0.75) 100%);
+      background: linear-gradient(180deg, transparent 55%, rgba(21,23,28,0.75) 100%);
     }
     .gallery-panel figcaption {
       position: absolute;
@@ -1085,7 +1089,7 @@
       bottom: 0;
       z-index: 2;
       padding: 26px 18px 16px;
-      background: linear-gradient(0deg, rgba(24,27,62,0.92) 0%, rgba(24,27,62,0) 100%);
+      background: linear-gradient(0deg, rgba(21,23,28,0.92) 0%, rgba(21,23,28,0) 100%);
       display: flex;
       flex-direction: column;
       gap: 3px;
@@ -1118,6 +1122,7 @@
       text-transform: uppercase;
       text-decoration: none;
       border: 1px solid rgba(0,0,0,0.2);
+      border-radius: 999px;
       cursor: pointer;
       transition: border-color 0.3s, background 0.3s;
     }
@@ -1161,6 +1166,7 @@
     .partner-tag {
       padding: 8px 20px;
       border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 999px;
       font-size: 0.75rem;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -1184,7 +1190,7 @@
       position: absolute;
       top: -12%; right: -6%;
       width: 620px; height: 620px;
-      background: radial-gradient(circle, rgba(252,47,0,0.10) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,107,61,0.10) 0%, transparent 70%);
       pointer-events: none;
     }
     .contact .container {
@@ -1234,7 +1240,7 @@
     .field input::placeholder, .field textarea::placeholder { color: rgba(255,255,255,0.4); }
     .field input:focus, .field textarea:focus {
       outline: none; border-color: var(--orange); background: rgba(255,255,255,0.09);
-      box-shadow: 0 0 0 3px rgba(252,47,0,0.18);
+      box-shadow: 0 0 0 3px rgba(255,107,61,0.18);
     }
     .field textarea { border-radius: 22px; min-height: 104px; resize: vertical; padding: 16px 22px; }
     .form-foot {
@@ -1317,6 +1323,18 @@
       .gi-2 { background-image: url('images/gallery-dallas-aerial-m.jpg'); }
       .gi-3 { background-image: url('images/gallery-texas-star-m.jpg'); }
     }
+
+    /* ── Slate & Ember: glowing ember on dark sections ── */
+    .hero .label, .collaboration .label, .approach .label, .promise .label,
+    .gallery .label, .partners .label, .contact .label,
+    .promise-num, .promise-sign, .gallery-num, .gallery-scroll-hint,
+    .nav-logo-cap, .footer-right a, .story-photo-caption span,
+    .approach-card-icon, .contact-direct a,
+    .contact .field label span { color: var(--orange-d); }
+    .partner-tag:hover { color: var(--orange-d); border-color: var(--orange-d); }
+    .gallery-progress-bar { background: var(--orange-d); }
+    .nav-links a::after { background: var(--orange-d); }
+    .approach-card:hover { border-top-color: var(--orange-d); }
 
     /* ── Reduced motion: calm everything ── */
     @media (prefers-reduced-motion: reduce) {
